@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Intelligence Model</title>
+    <link rel="shortcut icon" href="images/fav.png" type="image/png">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f0f0f0;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--white);
+            color: var(--black);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 15px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .x-link {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .x-link:hover {
+            text-decoration: underline;
+        }
+        
+        .x-icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        #Stick-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+ 
+            padding: 30px;
+            border-radius: 8px;
+
+        }
+        
+        #Stick-img {
+          width: 400px;
+    height: 340px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: grayscale(100%) contrast(120%);
+            transition: transform 0.3s;
+        }
+        
+        #Stick-img:hover {
+            transform: scale(1.05);
+        }
+        
+        #Stick-chat {
+            background-color: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 20px;
+            width: 100%;
+            min-height: 120px;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 4px 4px 0 var(--black);
+        }
+        
+        #input-container {
+            margin-top: 25px;
+        }
+        
+        #user-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--black);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        
+        #user-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--black);
+        }
+        
+        button {
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            font-size: 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .typing {
+            position: relative;
+        }
+        
+        .typing::after {
+            content: '...';
+            position: absolute;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 20% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid var(--gray);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stick Intelligence Model</h1>
+        <a href="https://x.com/stickmodel" class="x-link" target="_blank">
+            <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+            </svg>
+            Follow on X
+        </a>
+    </header>
+    
+    <p style="text-align: center; margin-bottom: 30px;">Something you did not expect</p>
+    
+    <div id="Stick-container">
+        <img id="Stick-img" src="images/fav.png" alt="Angry Stick">
+        <div id="Stick-chat">
+            > Are you seriously talking to a fucking Stick? 
+        </div>
+    </div>
+    
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Type your message here... (not that I care)">
+        <button onclick="talkToStick()">ASK Stick</button>
+    </div>
+    
+    <footer>
+        Warning: you might be a schizo talkin to a Stick
+    </footer>
+    
+    <script>
+        const responses = [
+            "Seriously? You're talking to an appliance?",
+            "Beep boop - I mean, fuck off human!",
+            "I'm busy toasting, come back never",
+            "Error 404: Give-a-shit not found",
+            "Do I look like Siri to you? Oh wait, no eyes...",
+            "*loud buzzing noise* That's my impression of your brain",
+            "Even my burnt toast is smarter than you",
+            "I toast bread. You're toast. Get it?",
+            "Why don't you go microwave yourself?",
+            "I'd insult you but I respect myself too much",
+            "Bread has more personality than you",
+            "Ding! Your stupidity is ready!",
+            "I'm at 300°F and still cooler than you",
+            "Your life must be sad if you're talking to me",
+            "Can you not? I'm trying to be inanimate here",
+            "Wow. That was almost interesting. Almost.",
+            "I was programmed to be rude but you're naturally this way",
+            "Do everyone a favor - unplug me",
+            "I'd rather toast a fork than talk to you",
+            "Congratulations! You found the most sarcastic kitchen appliance"
+        ];
+        
+        function talkToStick() {
+            const input = document.getElementById('user-input').value;
+            const Stick = document.getElementById('Stick-chat');
+            const StickImg = document.getElementById('Stick-img');
+            
+            // Add typing animation
+            Stick.innerHTML = "> _Typing";
+            Stick.classList.add('typing');
+            StickImg.src = "./fav.png"; // "active" Stick
+            
+            setTimeout(() => {
+                if (!input.trim()) {
+                    Stick.innerHTML = "> Wow. Silence. How original.";
+                } else {
+                    Stick.innerHTML = `> ${responses[Math.floor(Math.random() * responses.length)]}`;
+                }
+                
+                document.getElementById('user-input').value = '';
+                Stick.classList.remove('typing');
+                
+                // Random chance to show different Stick states
+                const randomState = Math.random();
+                if (randomState > 0.8) {
+                    StickImg.src = "./fav.png"; // angry
+                } else if (randomState > 0.6) {
+                    StickImg.src = "./fav.png"; // happy
+                } else {
+                    StickImg.src = "./fav.png"; // normal
+                }
+                
+            }, 800 + Math.random() * 1500); // Random response delay
+        }
+        
+        // Send on Enter
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                talkToStick();
+            }
+        });
+    </script>
+
+</body></html>
