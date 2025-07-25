@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stick Intelligence Model</title>
+    <title>AI Intelligence Model</title>
     <link rel="shortcut icon" href="images/fav.png" type="image/png">
     <style>
         :root {
@@ -54,7 +54,7 @@
             height: 16px;
         }
         
-        #Stick-container {
+        #AI-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,7 +65,7 @@
 
         }
         
-        #Stick-img {
+        #AI-img {
           width: 400px;
     height: 340px;
             object-fit: contain;
@@ -74,11 +74,11 @@
             transition: transform 0.3s;
         }
         
-        #Stick-img:hover {
+        #AI-img:hover {
             transform: scale(1.05);
         }
         
-        #Stick-chat {
+        #AI-chat {
             background-color: var(--black);
             color: var(--white);
             border: 2px solid var(--black);
@@ -160,8 +160,8 @@
 </head>
 <body>
     <header>
-        <h1>Stick Intelligence Model</h1>
-        <a href="https://x.com/stickmodel" class="x-link" target="_blank">
+        <h1>AI Intelligence Model</h1>
+        <a href="https://x.com/AImodel" class="x-link" target="_blank">
             <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
             </svg>
@@ -171,20 +171,20 @@
     
     <p style="text-align: center; margin-bottom: 30px;">Something you did not expect</p>
     
-    <div id="Stick-container">
-        <img id="Stick-img" src="images/fav.png" alt="Angry Stick">
-        <div id="Stick-chat">
-            > Are you seriously talking to a fucking Stick? 
+    <div id="AI-container">
+        <img id="AI-img" src="images/fav.png" alt="Angry AI">
+        <div id="AI-chat">
+            > Are you seriously talking to a fucking AI? 
         </div>
     </div>
     
     <div id="input-container">
         <input type="text" id="user-input" placeholder="Type your message here... (not that I care)">
-        <button onclick="talkToStick()">ASK Stick</button>
+        <button onclick="talkToAI()">ASK AI</button>
     </div>
     
     <footer>
-        Warning: you might be a schizo talkin to a Stick
+        Warning: you might be a schizo talkin to a AI
     </footer>
     
     <script>
@@ -211,34 +211,34 @@
             "Congratulations! You found the most sarcastic kitchen appliance"
         ];
         
-        function talkToStick() {
+        function talkToAI() {
             const input = document.getElementById('user-input').value;
-            const Stick = document.getElementById('Stick-chat');
-            const StickImg = document.getElementById('Stick-img');
+            const AI = document.getElementById('AI-chat');
+            const AIImg = document.getElementById('AI-img');
             
             // Add typing animation
-            Stick.innerHTML = "> _Typing";
-            Stick.classList.add('typing');
-            StickImg.src = "./fav.png"; // "active" Stick
+            AI.innerHTML = "> _Typing";
+            AI.classList.add('typing');
+            AIImg.src = "./fav.png"; // "active" AI
             
             setTimeout(() => {
                 if (!input.trim()) {
-                    Stick.innerHTML = "> Wow. Silence. How original.";
+                    AI.innerHTML = "> Wow. Silence. How original.";
                 } else {
-                    Stick.innerHTML = `> ${responses[Math.floor(Math.random() * responses.length)]}`;
+                    AI.innerHTML = `> ${responses[Math.floor(Math.random() * responses.length)]}`;
                 }
                 
                 document.getElementById('user-input').value = '';
-                Stick.classList.remove('typing');
+                AI.classList.remove('typing');
                 
-                // Random chance to show different Stick states
+                // Random chance to show different AI states
                 const randomState = Math.random();
                 if (randomState > 0.8) {
-                    StickImg.src = "./fav.png"; // angry
+                    AIImg.src = "./fav.png"; // angry
                 } else if (randomState > 0.6) {
-                    StickImg.src = "./fav.png"; // happy
+                    AIImg.src = "./fav.png"; // happy
                 } else {
-                    StickImg.src = "./fav.png"; // normal
+                    AIImg.src = "./fav.png"; // normal
                 }
                 
             }, 800 + Math.random() * 1500); // Random response delay
@@ -247,7 +247,7 @@
         // Send on Enter
         document.getElementById('user-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                talkToStick();
+                talkToAI();
             }
         });
     </script>
